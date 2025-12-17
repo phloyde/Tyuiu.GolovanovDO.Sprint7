@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Text;
 using System.Text.Unicode;
 
@@ -147,6 +148,36 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
             return avg;
         }
 
+
+        public string[,] Search(string[,] array, string text)
+        {
+            List<string[]> str = new List<string[]>();
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (array[i, j].ToLower().Contains(text.ToLower()))
+                    {
+                        string[] row = new string[9];
+                        for (int k = 0; k < 8; k++)
+                            row[k] = array[i, k];
+
+                        str.Add(row);
+                        break;
+                    }
+                }
+            }
+            string[,] res = new string[str.Count, 9];
+            for (int i = 0; i < str.Count; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    res[i, j] = str[i][j];  //Возвращает j-й элемент внутри i-го массива
+                }
+            }
+            return res;
+        }
 
 
     }
