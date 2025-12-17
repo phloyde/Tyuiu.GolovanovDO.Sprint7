@@ -85,5 +85,69 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
             return max;
         }
 
+
+        public int AvgYearExperience(string[,] array)
+        {
+            int avg = 0;
+            int cnt = 0;
+            int sum = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                int year = Convert.ToInt32(array[i, 5]);
+                cnt++;
+                sum += year; 
+            }
+            avg = (sum / cnt);
+            return avg;
+        }
+
+        public int MinSalary(string[,] array)
+        {
+            int min = 999999999;
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                int salary = Convert.ToInt32(array[i, 6]);
+                if (salary < min)
+                {
+                    min = salary;
+                }
+            }
+            return min;
+        }
+
+        public int MaxSalary(string[,] array)
+        {
+            int max = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                int salary = Convert.ToInt32(array[i, 6]);
+                if (salary > max)
+                {
+                    max = salary;
+                }
+            }
+            return max;
+        }
+
+        public int AvgSalary(string[,] array)
+        {
+            int avg = 0;
+            int cnt = 0;
+            int sum = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                int salary = Convert.ToInt32(array[i, 6]);
+                cnt++;
+                sum += salary;
+            }
+            avg = (sum / cnt);
+            return avg;
+        }
+
+
+
     }
 }
