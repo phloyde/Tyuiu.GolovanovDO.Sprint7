@@ -9,7 +9,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
     {
         public string[,] LoadFromFile(string path)
         {
-            if (!File.Exists(path)) return new string[0, 8];
+            if (!File.Exists(path)) return new string[0, 9];
 
             string[] str = File.ReadAllLines(path, Encoding.UTF8);
             string[,] array = new string[str.Length,9];
@@ -179,6 +179,34 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
             return res;
         }
 
+        public string GetFullName(string[,] array, int employeeIndex)
+        {
+            string fullname = "";
+            
+            if (employeeIndex >= array.GetLength(0) || employeeIndex < 0)
+            {
+                return "Индекс выходит за границы";
+            }
+            string firstname = array[employeeIndex, 1];
+            string midname = array[employeeIndex, 2];
+            string lastname = array[employeeIndex, 3];
 
+            fullname = firstname + " " + midname + " " + lastname.Trim();
+            return fullname;
+        }
+
+        public string[] GetAllFullName(string[,] array)
+        {
+            int rowcount = array.GetLength(0);
+            string[] fullnames = new string[rowcount];
+            for (int i = 0; i<rowcount; i++)
+            {
+                string firstname = array[i, 1];
+                string midname = array[i, 2];
+                string lastname = array[i, 3];
+                fullnames[i] = firstname + " " + midname + " " + lastname.Trim();
+            }
+            return fullnames;
+        }
     }
 }
