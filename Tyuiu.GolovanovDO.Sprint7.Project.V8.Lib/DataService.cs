@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Text;
 using System.Text.Unicode;
@@ -9,17 +10,18 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
     {
         public string[,] LoadFromFile(string path)
         {
-            if (!File.Exists(path)) return new string[0, 9];
+            if (!File.Exists(path)) return new string[0, 7];
 
             string[] str = File.ReadAllLines(path, Encoding.UTF8);
-            string[,] array = new string[str.Length,9];
+            string[,] array = new string[str.Length,7];
 
             for (int i = 0; i < str.Length; i++)
             {
                 string[] part = str[i].Split(';');
-                for (int j = 0; j < 9;  j++)
+
+                for (int j = 0; j < 7;  j++)
                 {
-                    array[i,j] = part[j];
+                    
                     if (j < part.Length)
                     {
                         array[i, j] = part[j];
@@ -40,15 +42,15 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
             for (int i = 0;i < array.GetLength(0); i++)
             {
                 string line = "";
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     line += array[i, j];
-                    if (j < 8)
+                    if (j < 6)
                     {
-                        line += ";";
-                    }
-                    lines.Add(line);
+                        line += ";";    
+                    }       
                 }
+                lines.Add(line);
             }
             File.WriteAllLines(path, lines, Encoding.UTF8);
         }
@@ -155,12 +157,12 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     if (array[i, j].ToLower().Contains(text.ToLower()))
                     {
-                        string[] row = new string[9];
-                        for (int k = 0; k < 8; k++)
+                        string[] row = new string[7];
+                        for (int k = 0; k < 6; k++)
                             row[k] = array[i, k];
 
                         str.Add(row);
@@ -168,10 +170,10 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
                     }
                 }
             }
-            string[,] res = new string[str.Count, 9];
+            string[,] res = new string[str.Count, 7];
             for (int i = 0; i < str.Count; i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     res[i, j] = str[i][j];  //Возвращает j-й элемент внутри i-го массива
                 }
@@ -207,6 +209,84 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
                 fullnames[i] = firstname + " " + midname + " " + lastname.Trim();
             }
             return fullnames;
+        }
+
+        public int MostOldPeople(string[,] array)
+        {
+            DateTime today = DateTime.Today;
+            int maxAge = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                DateTime birthDate = DateTime.ParseExact(array[i, 4], "dd.MM.yyyy", null);
+
+                int age = today.Year - birthDate.Year;
+                if (today.Month < birthDate.Month || (today.Month == birthDate.Month && today.Day < birthDate.Day))
+                {
+                    age = age - 1;
+                }
+                else
+                {
+                    age = age;
+                }
+                if (age > maxAge)
+                {
+                    maxAge = age;
+                }
+            }
+            return maxAge;
+        }
+
+        public int MostYoungPeople(string[,] array)
+        {
+            DateTime today = DateTime.Today;
+            int minAge = 999999999;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                DateTime birthDate = DateTime.ParseExact(array[i, 4], "dd.MM.yyyy", null);
+
+                int age = today.Year - birthDate.Year;
+                if (today.Month < birthDate.Month || (today.Month == birthDate.Month && today.Day < birthDate.Day))
+                {
+                    age = age - 1;
+                }
+                else
+                {
+                    age = age;
+                }
+                if (age < minAge)
+                {
+                    minAge = age;
+                }
+            }
+            return minAge;
+        }
+
+        public double AvgPeopleAge(string[,] array)
+        {
+            DateTime today = DateTime.Today;
+            double cnt = 0;
+            double sum = 0;
+
+            for (int i = 0; i < array.GetLength (0); i++)
+            {
+                DateTime birthDate = DateTime.ParseExact(array[i, 4], "dd.MM.yyyy", null);
+                int age = today.Year - birthDate.Year;
+                if (today.Month < birthDate.Month || (today.Month == birthDate.Month && today.Day < birthDate.Day))
+                {
+                    age = age - 1;
+                }
+                else
+                {
+                    age = age;
+                }
+                sum += age;
+                cnt++;
+
+            }
+            double avg = sum / cnt;
+            return avg;
         }
     }
 }
