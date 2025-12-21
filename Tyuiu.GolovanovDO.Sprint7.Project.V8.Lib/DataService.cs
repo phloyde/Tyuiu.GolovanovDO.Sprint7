@@ -162,7 +162,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
                     if (array[i, j].ToLower().Contains(text.ToLower()))
                     {
                         string[] row = new string[7];
-                        for (int k = 0; k < 6; k++)
+                        for (int k = 0; k < 7; k++)
                             row[k] = array[i, k];
 
                         str.Add(row);
@@ -285,7 +285,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
                 cnt++;
 
             }
-            double avg = sum / cnt;
+            double avg = Math.Round(sum / cnt, 2);
             return avg;
         }
     }

@@ -30,6 +30,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Test
             File.WriteAllText(testFile, fileContent, Encoding.UTF8);
 
             testArray = new string[,]{
+               
                 { "001", "Иванов", "Александр", "Сергеевич", "15.05.1985", "12", "85000"},
                 { "002", "Петров", "Дмитрий", "Александрович", "22.11.1978", "20", "95000"},
                 { "003", "Сидоров", "Михаил", "Владимирович", "03.07.1990", "8", "65000" },
@@ -181,7 +182,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Test
         public void AvgPeopleAge_Test()
         {
             double res = ds.AvgPeopleAge(testArray);
-            Assert.AreEqual(39.0, res);
+            Assert.AreEqual(39.00, res);
         }
     }
 }
