@@ -313,5 +313,167 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             FormAbout_GDO about = new FormAbout_GDO();
             about.ShowDialog();
         }
+
+        private void buttonSortExpirienceAscending_GDO_Click(object sender, EventArgs e)
+        {
+            int rowCount = dataGridViewResult_GDO.RowCount;
+            if (dataGridViewResult_GDO.AllowUserToAddRows)
+            {
+                rowCount--;
+            }
+
+            for (int i = 0; i < rowCount - 1; i++)
+            {
+                for (int j = 0; j < rowCount - 1; j++)
+                {
+                    //Две соседние строки
+                    DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
+                    DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
+
+                    string exp1Str = row1.Cells[5].Value.ToString() ?? "0";
+                    string exp2Str = row2.Cells[5].Value.ToString() ?? "0";
+
+                    int exp1 = 0, exp2 = 0;
+                    int.TryParse(exp1Str, out exp1);
+                    int.TryParse(exp2Str, out exp2);
+
+                    if (exp1 > exp2)
+                    {
+                        {
+                            for (int col = 0; col < dataGridViewResult_GDO.ColumnCount; col++)
+                            {
+                                object temp = row1.Cells[col].Value;
+                                row1.Cells[col].Value = row2.Cells[col].Value;
+                                row2.Cells[col].Value = temp;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void buttonSortSalaryAscending_GDO_Click(object sender, EventArgs e)
+        {
+            // Просто сортируем строки прямо в DataGridView
+            int rowCount = dataGridViewResult_GDO.Rows.Count;
+
+            // Если есть пустая строка для добавления, уменьшаем счетчик
+            if (dataGridViewResult_GDO.AllowUserToAddRows)
+                rowCount--;
+
+            // Самый тупой способ: пузырьковая сортировка
+            for (int i = 0; i < rowCount - 1; i++)
+            {
+                for (int j = 0; j < rowCount - i - 1; j++)
+                {
+                    // Берем две соседние строки
+                    DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
+                    DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
+
+                    // Получаем оклад из обеих строк
+                    string salary1Str = row1.Cells[6].Value?.ToString() ?? "0";
+                    string salary2Str = row2.Cells[6].Value?.ToString() ?? "0";
+
+                    int salary1 = 0, salary2 = 0;
+                    int.TryParse(salary1Str, out salary1);
+                    int.TryParse(salary2Str, out salary2);
+
+                    // Если первая больше второй - меняем местами
+                    if (salary1 > salary2)
+                    {
+                        // Меняем все столбцы
+                        for (int col = 0; col < dataGridViewResult_GDO.ColumnCount; col++)
+                        {
+                            object temp = row1.Cells[col].Value;
+                            row1.Cells[col].Value = row2.Cells[col].Value;
+                            row2.Cells[col].Value = temp;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void buttonSortExpirienceDescending_GDO_Click(object sender, EventArgs e)
+        {
+            {
+                int rowCount = dataGridViewResult_GDO.RowCount;
+                if (dataGridViewResult_GDO.AllowUserToAddRows)
+                {
+                    rowCount--;
+                }
+
+                for (int i = 0; i < rowCount - 1; i++)
+                {
+                    for (int j = 0; j < rowCount - 1; j++)
+                    {
+                        //Две соседние строки
+                        DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
+                        DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
+
+                        string exp1Str = row1.Cells[5].Value.ToString() ?? "0";
+                        string exp2Str = row2.Cells[5].Value.ToString() ?? "0";
+
+                        int exp1 = 0, exp2 = 0;
+                        int.TryParse(exp1Str, out exp1);
+                        int.TryParse(exp2Str, out exp2);
+
+                        if (exp1 < exp2)
+                        {
+                            {
+                                for (int col = 0; col < dataGridViewResult_GDO.ColumnCount; col++)
+                                {
+                                    object temp = row1.Cells[col].Value;
+                                    row1.Cells[col].Value = row2.Cells[col].Value;
+                                    row2.Cells[col].Value = temp;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void buttonSortSalaryAscendingDescending_GDO_Click(object sender, EventArgs e)
+        {
+            {
+                // Просто сортируем строки прямо в DataGridView
+                int rowCount = dataGridViewResult_GDO.Rows.Count;
+
+                // Если есть пустая строка для добавления, уменьшаем счетчик
+                if (dataGridViewResult_GDO.AllowUserToAddRows)
+                    rowCount--;
+
+                // Самый тупой способ: пузырьковая сортировка
+                for (int i = 0; i < rowCount - 1; i++)
+                {
+                    for (int j = 0; j < rowCount - i - 1; j++)
+                    {
+                        // Берем две соседние строки
+                        DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
+                        DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
+
+                        // Получаем оклад из обеих строк
+                        string salary1Str = row1.Cells[6].Value?.ToString() ?? "0";
+                        string salary2Str = row2.Cells[6].Value?.ToString() ?? "0";
+
+                        int salary1 = 0, salary2 = 0;
+                        int.TryParse(salary1Str, out salary1);
+                        int.TryParse(salary2Str, out salary2);
+
+                        // Если первая больше второй - меняем местами
+                        if (salary1 < salary2)
+                        {
+                            // Меняем все столбцы
+                            for (int col = 0; col < dataGridViewResult_GDO.ColumnCount; col++)
+                            {
+                                object temp = row1.Cells[col].Value;
+                                row1.Cells[col].Value = row2.Cells[col].Value;
+                                row2.Cells[col].Value = temp;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
