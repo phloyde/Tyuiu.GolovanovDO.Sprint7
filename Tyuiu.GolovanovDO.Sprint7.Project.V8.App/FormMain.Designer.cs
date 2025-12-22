@@ -35,6 +35,7 @@
             открытьToolStripMenuItem = new ToolStripMenuItem();
             справкаToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
+            какПользоватьсяПрограммойToolStripMenuItem = new ToolStripMenuItem();
             panelLeft_GDO = new Panel();
             groupBoxResult_GDO = new GroupBox();
             textBoxResult_GDO = new TextBox();
@@ -77,7 +78,7 @@
             panelTop_GDO.Dock = DockStyle.Top;
             panelTop_GDO.Location = new Point(0, 0);
             panelTop_GDO.Name = "panelTop_GDO";
-            panelTop_GDO.Size = new Size(1440, 25);
+            panelTop_GDO.Size = new Size(1440, 43);
             panelTop_GDO.TabIndex = 0;
             // 
             // menuStrip_GDO
@@ -89,6 +90,7 @@
             menuStrip_GDO.Size = new Size(1440, 28);
             menuStrip_GDO.TabIndex = 1;
             menuStrip_GDO.Text = "menuStrip1";
+            menuStrip_GDO.ItemClicked += menuStrip_GDO_ItemClicked;
             // 
             // файлToolStripMenuItem
             // 
@@ -115,7 +117,7 @@
             // справкаToolStripMenuItem
             // 
             справкаToolStripMenuItem.BackColor = Color.FromArgb(0, 192, 192);
-            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { оПрограммеToolStripMenuItem });
+            справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { оПрограммеToolStripMenuItem, какПользоватьсяПрограммойToolStripMenuItem });
             справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             справкаToolStripMenuItem.Size = new Size(85, 24);
             справкаToolStripMenuItem.Text = "Справка ";
@@ -124,9 +126,16 @@
             // оПрограммеToolStripMenuItem
             // 
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(187, 26);
+            оПрограммеToolStripMenuItem.Size = new Size(309, 26);
             оПрограммеToolStripMenuItem.Text = "О программе";
             оПрограммеToolStripMenuItem.Click += оПрограммеToolStripMenuItem_Click;
+            // 
+            // какПользоватьсяПрограммойToolStripMenuItem
+            // 
+            какПользоватьсяПрограммойToolStripMenuItem.Name = "какПользоватьсяПрограммойToolStripMenuItem";
+            какПользоватьсяПрограммойToolStripMenuItem.Size = new Size(309, 26);
+            какПользоватьсяПрограммойToolStripMenuItem.Text = "Как пользоваться программой";
+            какПользоватьсяПрограммойToolStripMenuItem.Click += какПользоватьсяПрограммойToolStripMenuItem_Click;
             // 
             // panelLeft_GDO
             // 
@@ -142,9 +151,9 @@
             panelLeft_GDO.Controls.Add(buttonMaxYearExperience_GDO);
             panelLeft_GDO.Controls.Add(buttonMinYearExperience_GDO);
             panelLeft_GDO.Dock = DockStyle.Left;
-            panelLeft_GDO.Location = new Point(0, 25);
+            panelLeft_GDO.Location = new Point(0, 43);
             panelLeft_GDO.Name = "panelLeft_GDO";
-            panelLeft_GDO.Size = new Size(255, 762);
+            panelLeft_GDO.Size = new Size(324, 744);
             panelLeft_GDO.TabIndex = 1;
             // 
             // groupBoxResult_GDO
@@ -196,12 +205,13 @@
             // 
             // buttonGetAllFullName_GDO
             // 
-            buttonGetAllFullName_GDO.Location = new Point(12, 475);
+            buttonGetAllFullName_GDO.BackColor = Color.FromArgb(255, 128, 0);
+            buttonGetAllFullName_GDO.Location = new Point(188, 601);
             buttonGetAllFullName_GDO.Name = "buttonGetAllFullName_GDO";
-            buttonGetAllFullName_GDO.Size = new Size(157, 49);
+            buttonGetAllFullName_GDO.Size = new Size(126, 63);
             buttonGetAllFullName_GDO.TabIndex = 7;
             buttonGetAllFullName_GDO.Text = "Список всех водителей";
-            buttonGetAllFullName_GDO.UseVisualStyleBackColor = true;
+            buttonGetAllFullName_GDO.UseVisualStyleBackColor = false;
             buttonGetAllFullName_GDO.Click += buttonGetAllFullName_GDO_Click;
             // 
             // buttonAvgSalary_GDO
@@ -274,9 +284,9 @@
             panelFill_GDO.Controls.Add(groupBoxOut_GDO);
             panelFill_GDO.Controls.Add(splitterFormMain_GDO);
             panelFill_GDO.Dock = DockStyle.Fill;
-            panelFill_GDO.Location = new Point(255, 25);
+            panelFill_GDO.Location = new Point(324, 43);
             panelFill_GDO.Name = "panelFill_GDO";
-            panelFill_GDO.Size = new Size(1185, 762);
+            panelFill_GDO.Size = new Size(1116, 744);
             panelFill_GDO.TabIndex = 2;
             // 
             // buttonSortSalaryAscendingDescending_GDO
@@ -308,7 +318,7 @@
             buttonSortSalaryAscending_GDO.Name = "buttonSortSalaryAscending_GDO";
             buttonSortSalaryAscending_GDO.Size = new Size(213, 72);
             buttonSortSalaryAscending_GDO.TabIndex = 13;
-            buttonSortSalaryAscending_GDO.Text = "Сортировать сортировать заработную плату по возрастанию\r\n";
+            buttonSortSalaryAscending_GDO.Text = "Сортировать заработную плату по возрастанию\r\n";
             buttonSortSalaryAscending_GDO.UseVisualStyleBackColor = false;
             buttonSortSalaryAscending_GDO.Click += buttonSortSalaryAscending_GDO_Click;
             // 
@@ -377,7 +387,7 @@
             // 
             splitterFormMain_GDO.Location = new Point(0, 0);
             splitterFormMain_GDO.Name = "splitterFormMain_GDO";
-            splitterFormMain_GDO.Size = new Size(4, 762);
+            splitterFormMain_GDO.Size = new Size(4, 744);
             splitterFormMain_GDO.TabIndex = 0;
             splitterFormMain_GDO.TabStop = false;
             // 
@@ -448,5 +458,6 @@
         private Button buttonSortExpirienceAscending_GDO;
         private Button buttonSortExpirienceDescending_GDO;
         private Button buttonSortSalaryAscendingDescending_GDO;
+        private ToolStripMenuItem какПользоватьсяПрограммойToolStripMenuItem;
     }
 }

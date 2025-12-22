@@ -475,5 +475,17 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 }
             }
         }
+
+        private void menuStrip_GDO_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void какПользоватьсяПрограммойToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHowToUse howtoUse = new FormHowToUse();
+            howtoUse.ShowDialog();
+
+        }
     }
 }

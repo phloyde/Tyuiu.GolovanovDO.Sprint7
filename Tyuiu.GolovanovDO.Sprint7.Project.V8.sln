@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.GolovanovDO.Sprint7.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.GolovanovDO.Sprint7.Project.V8.App", "Tyuiu.GolovanovDO.Sprint7.Project.V8.App\Tyuiu.GolovanovDO.Sprint7.Project.V8.App.csproj", "{0A4B6B82-CD94-43CB-AABE-8FF461F4AD3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{23CB091F-C342-47A9-81E9-41467712965C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +29,6 @@ Global
 		{0A4B6B82-CD94-43CB-AABE-8FF461F4AD3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A4B6B82-CD94-43CB-AABE-8FF461F4AD3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A4B6B82-CD94-43CB-AABE-8FF461F4AD3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23CB091F-C342-47A9-81E9-41467712965C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23CB091F-C342-47A9-81E9-41467712965C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23CB091F-C342-47A9-81E9-41467712965C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23CB091F-C342-47A9-81E9-41467712965C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,7 +37,6 @@ Global
 		{FA520A5E-DDD8-4589-9F8B-66277EACEDCE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{C66DDB9B-D449-4078-9FEF-99FD97289B8C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0A4B6B82-CD94-43CB-AABE-8FF461F4AD3E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{23CB091F-C342-47A9-81E9-41467712965C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B33D437-3806-4C73-81D1-CA84C51FF74B}
