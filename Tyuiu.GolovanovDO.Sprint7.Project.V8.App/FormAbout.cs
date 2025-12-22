@@ -21,5 +21,15 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
         {
 
         }
+
+        private void labelAbout_GDO_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

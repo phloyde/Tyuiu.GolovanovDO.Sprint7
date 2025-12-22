@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout_GDO));
             labelAbout_GDO = new Label();
             pictureBox_GDO = new PictureBox();
+            buttonOK = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox_GDO).BeginInit();
             SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             labelAbout_GDO.Size = new Size(387, 300);
             labelAbout_GDO.TabIndex = 0;
             labelAbout_GDO.Text = resources.GetString("labelAbout_GDO.Text");
+            labelAbout_GDO.Click += labelAbout_GDO_Click;
             // 
             // pictureBox_GDO
             // 
@@ -51,11 +53,22 @@
             pictureBox_GDO.TabIndex = 1;
             pictureBox_GDO.TabStop = false;
             // 
+            // buttonOK
+            // 
+            buttonOK.Location = new Point(570, 222);
+            buttonOK.Name = "buttonOK";
+            buttonOK.Size = new Size(94, 29);
+            buttonOK.TabIndex = 2;
+            buttonOK.Text = "OK";
+            buttonOK.UseVisualStyleBackColor = true;
+            buttonOK.Click += buttonOK_Click;
+            // 
             // FormAbout_GDO
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(682, 258);
+            Controls.Add(buttonOK);
             Controls.Add(pictureBox_GDO);
             Controls.Add(labelAbout_GDO);
             Name = "FormAbout_GDO";
@@ -70,5 +83,6 @@
 
         private Label labelAbout_GDO;
         private PictureBox pictureBox_GDO;
+        private Button buttonOK;
     }
 }
