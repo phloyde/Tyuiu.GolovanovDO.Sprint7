@@ -269,42 +269,42 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveFileDialog_GDO.FileName = "OutFile.csv";
+            saveFileDialog_GDO.InitialDirectory = Directory.GetCurrentDirectory();
+
+            if (saveFileDialog_GDO.ShowDialog() != DialogResult.OK)
             {
-                saveFileDialog_GDO.FileName = "OutPutFileTask7V16.csv";
-                saveFileDialog_GDO.InitialDirectory = Directory.GetCurrentDirectory();
-                saveFileDialog_GDO.ShowDialog();
+                return;
+            }
 
-                string path = saveFileDialog_GDO.FileName;
+            string path = saveFileDialog_GDO.FileName;
 
-                FileInfo fileInfo = new FileInfo(path);
-                bool fileExists = fileInfo.Exists;
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
-                if (fileExists)
-                {
-                    File.Delete(path);
-                }
+            int rows = dataGridViewResult_GDO.RowCount;
+            int cols = dataGridViewResult_GDO.ColumnCount;
 
-                int rows = dataGridViewResult_GDO.RowCount; //кол-ыо строк
-                int cols = dataGridViewResult_GDO.ColumnCount;//кол-во столбцов
+            for (int i = 0; i < rows; i++)
+            {
+                if (dataGridViewResult_GDO.Rows[i].IsNewRow) continue;
 
                 string str = "";
 
-                for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
                 {
-                    for (int j = 0; j < cols; j++)
+                    // Convert.ToString безопасно работает с null
+                    str = str + Convert.ToString(dataGridViewResult_GDO.Rows[i].Cells[j].Value);
+
+                    if (j != cols - 1)
                     {
-                        if (j != cols - 1)
-                        {
-                            str = str + dataGridViewResult_GDO.Rows[i].Cells[j].Value + ";";
-                        }
-                        else
-                        {
-                            str = str + dataGridViewResult_GDO.Rows[i].Cells[j].Value;
-                        }
+                        str = str + ";";
                     }
-                    File.AppendAllText(path, str + Environment.NewLine);
-                    str = "";
                 }
+
+                File.AppendAllText(path, str + Environment.NewLine);
             }
         }
 
@@ -486,6 +486,42 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             FormHowToUse howtoUse = new FormHowToUse();
             howtoUse.ShowDialog();
 
+        }
+
+        private void buttonChart_GDO_Click(object sender, EventArgs e)
+        {
+            // 1. Проверяем, есть ли данные
+            if (dataArray == null)
+            {
+                MessageBox.Show("Сначала загрузите данные!");
+                return;
+            }
+
+            // 2. Очищаем график
+            chart_GDO.Series[0].Points.Clear();
+
+            // 3. Проходим по всем водителям
+            for (int i = 0; i < dataArray.GetLength(0); i++)
+            {
+                try
+                {
+                    // 4. Берем стаж и зарплату
+                    int experience = int.Parse(dataArray[i, 5]); // стаж в столбце 5
+                    int salary = int.Parse(dataArray[i, 6]); // зарплата в столбце 6
+
+                    // 5. Добавляем точку на график
+                    chart_GDO.Series[0].Points.AddXY(experience, salary);
+                }
+                catch
+                {
+                    // Пропускаем если ошибка
+                    continue;
+                }
+            }
+
+            // 6. Настраиваем подписи осей
+            chart_GDO.ChartAreas[0].AxisX.Title = "Стаж (лет)";
+            chart_GDO.ChartAreas[0].AxisY.Title = "Зарплата (руб.)";
         }
     }
 }

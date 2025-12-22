@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             panelTop_GDO = new Panel();
             menuStrip_GDO = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
@@ -37,39 +40,49 @@
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             какПользоватьсяПрограммойToolStripMenuItem = new ToolStripMenuItem();
             panelLeft_GDO = new Panel();
+            groupBoxLeft_GDO = new GroupBox();
+            buttonChart_GDO = new Button();
+            buttonAddRow_GDO = new Button();
+            buttonDeleteRow_GDO = new Button();
+            textBoxDeletRow_GDO = new TextBox();
+            buttonMinYearExperience_GDO = new Button();
+            buttonGetAllFullName_GDO = new Button();
             groupBoxResult_GDO = new GroupBox();
             textBoxResult_GDO = new TextBox();
-            buttonAvgPeopleAge_GDO = new Button();
-            buttonMostYoungPeople_GDO = new Button();
-            buttonMostOldPeople_GDO = new Button();
-            buttonGetAllFullName_GDO = new Button();
-            buttonAvgSalary_GDO = new Button();
-            buttonMaxSalary_GDO = new Button();
-            buttonMinSalary_GDO = new Button();
-            buttonAvgYearExperience_GDO = new Button();
             buttonMaxYearExperience_GDO = new Button();
-            buttonMinYearExperience_GDO = new Button();
+            buttonAvgPeopleAge_GDO = new Button();
+            buttonAvgYearExperience_GDO = new Button();
+            buttonMostYoungPeople_GDO = new Button();
+            buttonMinSalary_GDO = new Button();
+            buttonMostOldPeople_GDO = new Button();
+            buttonMaxSalary_GDO = new Button();
+            buttonAvgSalary_GDO = new Button();
             panelFill_GDO = new Panel();
+            groupBoxOut_GDO = new GroupBox();
+            chart_GDO = new System.Windows.Forms.DataVisualization.Charting.Chart();
             buttonSortSalaryAscendingDescending_GDO = new Button();
-            buttonSortExpirienceDescending_GDO = new Button();
+            dataGridViewResult_GDO = new DataGridView();
             buttonSortSalaryAscending_GDO = new Button();
+            buttonSortExpirienceDescending_GDO = new Button();
             buttonSortExpirienceAscending_GDO = new Button();
+            splitterFormMain_GDO = new Splitter();
             groupBoxSearch_GDO = new GroupBox();
             buttonSearch_GDO = new Button();
             textBoxSearch_GDO = new TextBox();
-            groupBoxOut_GDO = new GroupBox();
-            dataGridViewResult_GDO = new DataGridView();
-            splitterFormMain_GDO = new Splitter();
             openFileDialog_GDO = new OpenFileDialog();
             saveFileDialog_GDO = new SaveFileDialog();
+            panelSearch_GDO = new Panel();
             panelTop_GDO.SuspendLayout();
             menuStrip_GDO.SuspendLayout();
             panelLeft_GDO.SuspendLayout();
+            groupBoxLeft_GDO.SuspendLayout();
             groupBoxResult_GDO.SuspendLayout();
             panelFill_GDO.SuspendLayout();
-            groupBoxSearch_GDO.SuspendLayout();
             groupBoxOut_GDO.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart_GDO).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewResult_GDO).BeginInit();
+            groupBoxSearch_GDO.SuspendLayout();
+            panelSearch_GDO.SuspendLayout();
             SuspendLayout();
             // 
             // panelTop_GDO
@@ -139,27 +152,99 @@
             // 
             // panelLeft_GDO
             // 
-            panelLeft_GDO.Controls.Add(groupBoxResult_GDO);
-            panelLeft_GDO.Controls.Add(buttonAvgPeopleAge_GDO);
-            panelLeft_GDO.Controls.Add(buttonMostYoungPeople_GDO);
-            panelLeft_GDO.Controls.Add(buttonMostOldPeople_GDO);
-            panelLeft_GDO.Controls.Add(buttonGetAllFullName_GDO);
-            panelLeft_GDO.Controls.Add(buttonAvgSalary_GDO);
-            panelLeft_GDO.Controls.Add(buttonMaxSalary_GDO);
-            panelLeft_GDO.Controls.Add(buttonMinSalary_GDO);
-            panelLeft_GDO.Controls.Add(buttonAvgYearExperience_GDO);
-            panelLeft_GDO.Controls.Add(buttonMaxYearExperience_GDO);
-            panelLeft_GDO.Controls.Add(buttonMinYearExperience_GDO);
+            panelLeft_GDO.Controls.Add(groupBoxLeft_GDO);
             panelLeft_GDO.Dock = DockStyle.Left;
             panelLeft_GDO.Location = new Point(0, 43);
             panelLeft_GDO.Name = "panelLeft_GDO";
             panelLeft_GDO.Size = new Size(324, 744);
             panelLeft_GDO.TabIndex = 1;
             // 
+            // groupBoxLeft_GDO
+            // 
+            groupBoxLeft_GDO.Controls.Add(buttonChart_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonAddRow_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonDeleteRow_GDO);
+            groupBoxLeft_GDO.Controls.Add(textBoxDeletRow_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonMinYearExperience_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonGetAllFullName_GDO);
+            groupBoxLeft_GDO.Controls.Add(groupBoxResult_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonMaxYearExperience_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonAvgPeopleAge_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonAvgYearExperience_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonMostYoungPeople_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonMinSalary_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonMostOldPeople_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonMaxSalary_GDO);
+            groupBoxLeft_GDO.Controls.Add(buttonAvgSalary_GDO);
+            groupBoxLeft_GDO.Dock = DockStyle.Fill;
+            groupBoxLeft_GDO.Location = new Point(0, 0);
+            groupBoxLeft_GDO.Name = "groupBoxLeft_GDO";
+            groupBoxLeft_GDO.Size = new Size(324, 744);
+            groupBoxLeft_GDO.TabIndex = 12;
+            groupBoxLeft_GDO.TabStop = false;
+            groupBoxLeft_GDO.Text = "Действия";
+            // 
+            // buttonChart_GDO
+            // 
+            buttonChart_GDO.BackColor = Color.FromArgb(0, 192, 0);
+            buttonChart_GDO.Location = new Point(178, 111);
+            buttonChart_GDO.Name = "buttonChart_GDO";
+            buttonChart_GDO.Size = new Size(140, 44);
+            buttonChart_GDO.TabIndex = 15;
+            buttonChart_GDO.Text = "Создать график";
+            buttonChart_GDO.UseVisualStyleBackColor = false;
+            buttonChart_GDO.Click += buttonChart_GDO_Click;
+            // 
+            // buttonAddRow_GDO
+            // 
+            buttonAddRow_GDO.Location = new Point(6, 574);
+            buttonAddRow_GDO.Name = "buttonAddRow_GDO";
+            buttonAddRow_GDO.Size = new Size(167, 51);
+            buttonAddRow_GDO.TabIndex = 14;
+            buttonAddRow_GDO.Text = "Добавить строку";
+            buttonAddRow_GDO.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteRow_GDO
+            // 
+            buttonDeleteRow_GDO.Location = new Point(6, 631);
+            buttonDeleteRow_GDO.Name = "buttonDeleteRow_GDO";
+            buttonDeleteRow_GDO.Size = new Size(167, 52);
+            buttonDeleteRow_GDO.TabIndex = 13;
+            buttonDeleteRow_GDO.Text = "Какую строку удалить?";
+            buttonDeleteRow_GDO.UseVisualStyleBackColor = true;
+            // 
+            // textBoxDeletRow_GDO
+            // 
+            textBoxDeletRow_GDO.Location = new Point(189, 644);
+            textBoxDeletRow_GDO.Name = "textBoxDeletRow_GDO";
+            textBoxDeletRow_GDO.Size = new Size(125, 27);
+            textBoxDeletRow_GDO.TabIndex = 12;
+            // 
+            // buttonMinYearExperience_GDO
+            // 
+            buttonMinYearExperience_GDO.Location = new Point(6, 32);
+            buttonMinYearExperience_GDO.Name = "buttonMinYearExperience_GDO";
+            buttonMinYearExperience_GDO.Size = new Size(157, 54);
+            buttonMinYearExperience_GDO.TabIndex = 1;
+            buttonMinYearExperience_GDO.Text = "Наименьший стаж вождения";
+            buttonMinYearExperience_GDO.UseVisualStyleBackColor = true;
+            buttonMinYearExperience_GDO.Click += buttonMinYearExperience_GDO_Click;
+            // 
+            // buttonGetAllFullName_GDO
+            // 
+            buttonGetAllFullName_GDO.BackColor = Color.FromArgb(255, 128, 0);
+            buttonGetAllFullName_GDO.Location = new Point(183, 31);
+            buttonGetAllFullName_GDO.Name = "buttonGetAllFullName_GDO";
+            buttonGetAllFullName_GDO.Size = new Size(126, 63);
+            buttonGetAllFullName_GDO.TabIndex = 7;
+            buttonGetAllFullName_GDO.Text = "Список всех водителей";
+            buttonGetAllFullName_GDO.UseVisualStyleBackColor = false;
+            buttonGetAllFullName_GDO.Click += buttonGetAllFullName_GDO_Click;
+            // 
             // groupBoxResult_GDO
             // 
             groupBoxResult_GDO.Controls.Add(textBoxResult_GDO);
-            groupBoxResult_GDO.Location = new Point(12, 591);
+            groupBoxResult_GDO.Location = new Point(6, 507);
             groupBoxResult_GDO.Name = "groupBoxResult_GDO";
             groupBoxResult_GDO.Size = new Size(157, 61);
             groupBoxResult_GDO.TabIndex = 11;
@@ -173,90 +258,9 @@
             textBoxResult_GDO.Size = new Size(145, 27);
             textBoxResult_GDO.TabIndex = 0;
             // 
-            // buttonAvgPeopleAge_GDO
-            // 
-            buttonAvgPeopleAge_GDO.Location = new Point(12, 421);
-            buttonAvgPeopleAge_GDO.Name = "buttonAvgPeopleAge_GDO";
-            buttonAvgPeopleAge_GDO.Size = new Size(157, 48);
-            buttonAvgPeopleAge_GDO.TabIndex = 10;
-            buttonAvgPeopleAge_GDO.Text = "Средний возраст водителей";
-            buttonAvgPeopleAge_GDO.UseVisualStyleBackColor = true;
-            buttonAvgPeopleAge_GDO.Click += buttonAvgPeopleAge_GDO_Click;
-            // 
-            // buttonMostYoungPeople_GDO
-            // 
-            buttonMostYoungPeople_GDO.Location = new Point(12, 381);
-            buttonMostYoungPeople_GDO.Name = "buttonMostYoungPeople_GDO";
-            buttonMostYoungPeople_GDO.Size = new Size(157, 34);
-            buttonMostYoungPeople_GDO.TabIndex = 9;
-            buttonMostYoungPeople_GDO.Text = "Младший водитель";
-            buttonMostYoungPeople_GDO.UseVisualStyleBackColor = true;
-            buttonMostYoungPeople_GDO.Click += buttonMostYoungPeople_GDO_Click;
-            // 
-            // buttonMostOldPeople_GDO
-            // 
-            buttonMostOldPeople_GDO.Location = new Point(12, 338);
-            buttonMostOldPeople_GDO.Name = "buttonMostOldPeople_GDO";
-            buttonMostOldPeople_GDO.Size = new Size(157, 37);
-            buttonMostOldPeople_GDO.TabIndex = 8;
-            buttonMostOldPeople_GDO.Text = "Старший водитель";
-            buttonMostOldPeople_GDO.UseVisualStyleBackColor = true;
-            buttonMostOldPeople_GDO.Click += buttonMostOldPeople_GDO_Click;
-            // 
-            // buttonGetAllFullName_GDO
-            // 
-            buttonGetAllFullName_GDO.BackColor = Color.FromArgb(255, 128, 0);
-            buttonGetAllFullName_GDO.Location = new Point(188, 601);
-            buttonGetAllFullName_GDO.Name = "buttonGetAllFullName_GDO";
-            buttonGetAllFullName_GDO.Size = new Size(126, 63);
-            buttonGetAllFullName_GDO.TabIndex = 7;
-            buttonGetAllFullName_GDO.Text = "Список всех водителей";
-            buttonGetAllFullName_GDO.UseVisualStyleBackColor = false;
-            buttonGetAllFullName_GDO.Click += buttonGetAllFullName_GDO_Click;
-            // 
-            // buttonAvgSalary_GDO
-            // 
-            buttonAvgSalary_GDO.Location = new Point(12, 284);
-            buttonAvgSalary_GDO.Name = "buttonAvgSalary_GDO";
-            buttonAvgSalary_GDO.Size = new Size(157, 48);
-            buttonAvgSalary_GDO.TabIndex = 6;
-            buttonAvgSalary_GDO.Text = "Средняя заработная плата";
-            buttonAvgSalary_GDO.UseVisualStyleBackColor = true;
-            buttonAvgSalary_GDO.Click += buttonAvgSalary_GDO_Click;
-            // 
-            // buttonMaxSalary_GDO
-            // 
-            buttonMaxSalary_GDO.Location = new Point(12, 229);
-            buttonMaxSalary_GDO.Name = "buttonMaxSalary_GDO";
-            buttonMaxSalary_GDO.Size = new Size(157, 49);
-            buttonMaxSalary_GDO.TabIndex = 5;
-            buttonMaxSalary_GDO.Text = "Наибольшая заработная плата";
-            buttonMaxSalary_GDO.UseVisualStyleBackColor = true;
-            buttonMaxSalary_GDO.Click += buttonMaxSalary_GDO_Click;
-            // 
-            // buttonMinSalary_GDO
-            // 
-            buttonMinSalary_GDO.Location = new Point(12, 174);
-            buttonMinSalary_GDO.Name = "buttonMinSalary_GDO";
-            buttonMinSalary_GDO.Size = new Size(157, 49);
-            buttonMinSalary_GDO.TabIndex = 4;
-            buttonMinSalary_GDO.Text = "Наименьшая заработная плата";
-            buttonMinSalary_GDO.UseVisualStyleBackColor = true;
-            buttonMinSalary_GDO.Click += buttonMinSalary_GDO_Click;
-            // 
-            // buttonAvgYearExperience_GDO
-            // 
-            buttonAvgYearExperience_GDO.Location = new Point(12, 120);
-            buttonAvgYearExperience_GDO.Name = "buttonAvgYearExperience_GDO";
-            buttonAvgYearExperience_GDO.Size = new Size(157, 48);
-            buttonAvgYearExperience_GDO.TabIndex = 3;
-            buttonAvgYearExperience_GDO.Text = "Средний стаж вождения";
-            buttonAvgYearExperience_GDO.UseVisualStyleBackColor = true;
-            buttonAvgYearExperience_GDO.Click += buttonAvgYearExperience_GDO_Click;
-            // 
             // buttonMaxYearExperience_GDO
             // 
-            buttonMaxYearExperience_GDO.Location = new Point(12, 66);
+            buttonMaxYearExperience_GDO.Location = new Point(6, 92);
             buttonMaxYearExperience_GDO.Name = "buttonMaxYearExperience_GDO";
             buttonMaxYearExperience_GDO.Size = new Size(157, 48);
             buttonMaxYearExperience_GDO.TabIndex = 2;
@@ -264,23 +268,78 @@
             buttonMaxYearExperience_GDO.UseVisualStyleBackColor = true;
             buttonMaxYearExperience_GDO.Click += buttonMaxYearExperience_GDO_Click;
             // 
-            // buttonMinYearExperience_GDO
+            // buttonAvgPeopleAge_GDO
             // 
-            buttonMinYearExperience_GDO.Location = new Point(12, 6);
-            buttonMinYearExperience_GDO.Name = "buttonMinYearExperience_GDO";
-            buttonMinYearExperience_GDO.Size = new Size(157, 54);
-            buttonMinYearExperience_GDO.TabIndex = 1;
-            buttonMinYearExperience_GDO.Text = "Наименьший стаж вождения";
-            buttonMinYearExperience_GDO.UseVisualStyleBackColor = true;
-            buttonMinYearExperience_GDO.Click += buttonMinYearExperience_GDO_Click;
+            buttonAvgPeopleAge_GDO.Location = new Point(6, 453);
+            buttonAvgPeopleAge_GDO.Name = "buttonAvgPeopleAge_GDO";
+            buttonAvgPeopleAge_GDO.Size = new Size(157, 48);
+            buttonAvgPeopleAge_GDO.TabIndex = 10;
+            buttonAvgPeopleAge_GDO.Text = "Средний возраст водителей";
+            buttonAvgPeopleAge_GDO.UseVisualStyleBackColor = true;
+            buttonAvgPeopleAge_GDO.Click += buttonAvgPeopleAge_GDO_Click;
+            // 
+            // buttonAvgYearExperience_GDO
+            // 
+            buttonAvgYearExperience_GDO.Location = new Point(6, 146);
+            buttonAvgYearExperience_GDO.Name = "buttonAvgYearExperience_GDO";
+            buttonAvgYearExperience_GDO.Size = new Size(157, 48);
+            buttonAvgYearExperience_GDO.TabIndex = 3;
+            buttonAvgYearExperience_GDO.Text = "Средний стаж вождения";
+            buttonAvgYearExperience_GDO.UseVisualStyleBackColor = true;
+            buttonAvgYearExperience_GDO.Click += buttonAvgYearExperience_GDO_Click;
+            // 
+            // buttonMostYoungPeople_GDO
+            // 
+            buttonMostYoungPeople_GDO.Location = new Point(6, 413);
+            buttonMostYoungPeople_GDO.Name = "buttonMostYoungPeople_GDO";
+            buttonMostYoungPeople_GDO.Size = new Size(157, 34);
+            buttonMostYoungPeople_GDO.TabIndex = 9;
+            buttonMostYoungPeople_GDO.Text = "Младший водитель";
+            buttonMostYoungPeople_GDO.UseVisualStyleBackColor = true;
+            buttonMostYoungPeople_GDO.Click += buttonMostYoungPeople_GDO_Click;
+            // 
+            // buttonMinSalary_GDO
+            // 
+            buttonMinSalary_GDO.Location = new Point(6, 200);
+            buttonMinSalary_GDO.Name = "buttonMinSalary_GDO";
+            buttonMinSalary_GDO.Size = new Size(157, 49);
+            buttonMinSalary_GDO.TabIndex = 4;
+            buttonMinSalary_GDO.Text = "Наименьшая заработная плата";
+            buttonMinSalary_GDO.UseVisualStyleBackColor = true;
+            buttonMinSalary_GDO.Click += buttonMinSalary_GDO_Click;
+            // 
+            // buttonMostOldPeople_GDO
+            // 
+            buttonMostOldPeople_GDO.Location = new Point(6, 364);
+            buttonMostOldPeople_GDO.Name = "buttonMostOldPeople_GDO";
+            buttonMostOldPeople_GDO.Size = new Size(157, 37);
+            buttonMostOldPeople_GDO.TabIndex = 8;
+            buttonMostOldPeople_GDO.Text = "Старший водитель";
+            buttonMostOldPeople_GDO.UseVisualStyleBackColor = true;
+            buttonMostOldPeople_GDO.Click += buttonMostOldPeople_GDO_Click;
+            // 
+            // buttonMaxSalary_GDO
+            // 
+            buttonMaxSalary_GDO.Location = new Point(6, 255);
+            buttonMaxSalary_GDO.Name = "buttonMaxSalary_GDO";
+            buttonMaxSalary_GDO.Size = new Size(157, 49);
+            buttonMaxSalary_GDO.TabIndex = 5;
+            buttonMaxSalary_GDO.Text = "Наибольшая заработная плата";
+            buttonMaxSalary_GDO.UseVisualStyleBackColor = true;
+            buttonMaxSalary_GDO.Click += buttonMaxSalary_GDO_Click;
+            // 
+            // buttonAvgSalary_GDO
+            // 
+            buttonAvgSalary_GDO.Location = new Point(6, 310);
+            buttonAvgSalary_GDO.Name = "buttonAvgSalary_GDO";
+            buttonAvgSalary_GDO.Size = new Size(157, 48);
+            buttonAvgSalary_GDO.TabIndex = 6;
+            buttonAvgSalary_GDO.Text = "Средняя заработная плата";
+            buttonAvgSalary_GDO.UseVisualStyleBackColor = true;
+            buttonAvgSalary_GDO.Click += buttonAvgSalary_GDO_Click;
             // 
             // panelFill_GDO
             // 
-            panelFill_GDO.Controls.Add(buttonSortSalaryAscendingDescending_GDO);
-            panelFill_GDO.Controls.Add(buttonSortExpirienceDescending_GDO);
-            panelFill_GDO.Controls.Add(buttonSortSalaryAscending_GDO);
-            panelFill_GDO.Controls.Add(buttonSortExpirienceAscending_GDO);
-            panelFill_GDO.Controls.Add(groupBoxSearch_GDO);
             panelFill_GDO.Controls.Add(groupBoxOut_GDO);
             panelFill_GDO.Controls.Add(splitterFormMain_GDO);
             panelFill_GDO.Dock = DockStyle.Fill;
@@ -289,10 +348,43 @@
             panelFill_GDO.Size = new Size(1116, 744);
             panelFill_GDO.TabIndex = 2;
             // 
+            // groupBoxOut_GDO
+            // 
+            groupBoxOut_GDO.Controls.Add(chart_GDO);
+            groupBoxOut_GDO.Controls.Add(buttonSortSalaryAscendingDescending_GDO);
+            groupBoxOut_GDO.Controls.Add(dataGridViewResult_GDO);
+            groupBoxOut_GDO.Controls.Add(buttonSortSalaryAscending_GDO);
+            groupBoxOut_GDO.Controls.Add(buttonSortExpirienceDescending_GDO);
+            groupBoxOut_GDO.Controls.Add(buttonSortExpirienceAscending_GDO);
+            groupBoxOut_GDO.Dock = DockStyle.Bottom;
+            groupBoxOut_GDO.Location = new Point(4, 111);
+            groupBoxOut_GDO.Name = "groupBoxOut_GDO";
+            groupBoxOut_GDO.Size = new Size(1112, 633);
+            groupBoxOut_GDO.TabIndex = 1;
+            groupBoxOut_GDO.TabStop = false;
+            groupBoxOut_GDO.Text = "Вывод";
+            // 
+            // chart_GDO
+            // 
+            chartArea1.Name = "ChartArea1";
+            chart_GDO.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            chart_GDO.Legends.Add(legend1);
+            chart_GDO.Location = new Point(832, 199);
+            chart_GDO.Name = "chart_GDO";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart_GDO.Series.Add(series1);
+            chart_GDO.Size = new Size(577, 375);
+            chart_GDO.TabIndex = 16;
+            chart_GDO.Text = "chart1";
+            // 
             // buttonSortSalaryAscendingDescending_GDO
             // 
             buttonSortSalaryAscendingDescending_GDO.BackColor = Color.FromArgb(128, 255, 128);
-            buttonSortSalaryAscendingDescending_GDO.Location = new Point(722, 78);
+            buttonSortSalaryAscendingDescending_GDO.Location = new Point(182, 113);
             buttonSortSalaryAscendingDescending_GDO.Name = "buttonSortSalaryAscendingDescending_GDO";
             buttonSortSalaryAscendingDescending_GDO.Size = new Size(213, 72);
             buttonSortSalaryAscendingDescending_GDO.TabIndex = 15;
@@ -300,21 +392,21 @@
             buttonSortSalaryAscendingDescending_GDO.UseVisualStyleBackColor = false;
             buttonSortSalaryAscendingDescending_GDO.Click += buttonSortSalaryAscendingDescending_GDO_Click;
             // 
-            // buttonSortExpirienceDescending_GDO
+            // dataGridViewResult_GDO
             // 
-            buttonSortExpirienceDescending_GDO.BackColor = Color.FromArgb(255, 128, 128);
-            buttonSortExpirienceDescending_GDO.Location = new Point(279, 78);
-            buttonSortExpirienceDescending_GDO.Name = "buttonSortExpirienceDescending_GDO";
-            buttonSortExpirienceDescending_GDO.Size = new Size(170, 72);
-            buttonSortExpirienceDescending_GDO.TabIndex = 14;
-            buttonSortExpirienceDescending_GDO.Text = "Сортировать стаж по убыванию";
-            buttonSortExpirienceDescending_GDO.UseVisualStyleBackColor = false;
-            buttonSortExpirienceDescending_GDO.Click += buttonSortExpirienceDescending_GDO_Click;
+            dataGridViewResult_GDO.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewResult_GDO.Location = new Point(2, 199);
+            dataGridViewResult_GDO.Name = "dataGridViewResult_GDO";
+            dataGridViewResult_GDO.RowHeadersVisible = false;
+            dataGridViewResult_GDO.RowHeadersWidth = 51;
+            dataGridViewResult_GDO.Size = new Size(815, 476);
+            dataGridViewResult_GDO.TabIndex = 0;
+            dataGridViewResult_GDO.CellContentClick += dataGridViewResult_GDO_CellContentClick;
             // 
             // buttonSortSalaryAscending_GDO
             // 
             buttonSortSalaryAscending_GDO.BackColor = Color.FromArgb(128, 255, 128);
-            buttonSortSalaryAscending_GDO.Location = new Point(503, 78);
+            buttonSortSalaryAscending_GDO.Location = new Point(182, 35);
             buttonSortSalaryAscending_GDO.Name = "buttonSortSalaryAscending_GDO";
             buttonSortSalaryAscending_GDO.Size = new Size(213, 72);
             buttonSortSalaryAscending_GDO.TabIndex = 13;
@@ -322,66 +414,27 @@
             buttonSortSalaryAscending_GDO.UseVisualStyleBackColor = false;
             buttonSortSalaryAscending_GDO.Click += buttonSortSalaryAscending_GDO_Click;
             // 
+            // buttonSortExpirienceDescending_GDO
+            // 
+            buttonSortExpirienceDescending_GDO.BackColor = Color.FromArgb(255, 128, 128);
+            buttonSortExpirienceDescending_GDO.Location = new Point(6, 35);
+            buttonSortExpirienceDescending_GDO.Name = "buttonSortExpirienceDescending_GDO";
+            buttonSortExpirienceDescending_GDO.Size = new Size(170, 72);
+            buttonSortExpirienceDescending_GDO.TabIndex = 14;
+            buttonSortExpirienceDescending_GDO.Text = "Сортировать стаж по убыванию";
+            buttonSortExpirienceDescending_GDO.UseVisualStyleBackColor = false;
+            buttonSortExpirienceDescending_GDO.Click += buttonSortExpirienceDescending_GDO_Click;
+            // 
             // buttonSortExpirienceAscending_GDO
             // 
             buttonSortExpirienceAscending_GDO.BackColor = Color.FromArgb(255, 128, 128);
-            buttonSortExpirienceAscending_GDO.Location = new Point(103, 78);
+            buttonSortExpirienceAscending_GDO.Location = new Point(6, 113);
             buttonSortExpirienceAscending_GDO.Name = "buttonSortExpirienceAscending_GDO";
             buttonSortExpirienceAscending_GDO.Size = new Size(170, 72);
             buttonSortExpirienceAscending_GDO.TabIndex = 12;
             buttonSortExpirienceAscending_GDO.Text = "Сортировать стаж по возрастанию\r\n";
             buttonSortExpirienceAscending_GDO.UseVisualStyleBackColor = false;
             buttonSortExpirienceAscending_GDO.Click += buttonSortExpirienceAscending_GDO_Click;
-            // 
-            // groupBoxSearch_GDO
-            // 
-            groupBoxSearch_GDO.Controls.Add(buttonSearch_GDO);
-            groupBoxSearch_GDO.Controls.Add(textBoxSearch_GDO);
-            groupBoxSearch_GDO.Location = new Point(41, 6);
-            groupBoxSearch_GDO.Name = "groupBoxSearch_GDO";
-            groupBoxSearch_GDO.Size = new Size(921, 66);
-            groupBoxSearch_GDO.TabIndex = 11;
-            groupBoxSearch_GDO.TabStop = false;
-            groupBoxSearch_GDO.Text = "Поиск";
-            // 
-            // buttonSearch_GDO
-            // 
-            buttonSearch_GDO.BackColor = Color.FromArgb(192, 192, 255);
-            buttonSearch_GDO.Location = new Point(765, 18);
-            buttonSearch_GDO.Name = "buttonSearch_GDO";
-            buttonSearch_GDO.Size = new Size(120, 43);
-            buttonSearch_GDO.TabIndex = 1;
-            buttonSearch_GDO.Text = "Обновить";
-            buttonSearch_GDO.UseVisualStyleBackColor = false;
-            buttonSearch_GDO.Click += buttonSearch_GDO_Click;
-            // 
-            // textBoxSearch_GDO
-            // 
-            textBoxSearch_GDO.Location = new Point(6, 26);
-            textBoxSearch_GDO.Name = "textBoxSearch_GDO";
-            textBoxSearch_GDO.Size = new Size(715, 27);
-            textBoxSearch_GDO.TabIndex = 0;
-            // 
-            // groupBoxOut_GDO
-            // 
-            groupBoxOut_GDO.Controls.Add(dataGridViewResult_GDO);
-            groupBoxOut_GDO.Location = new Point(41, 142);
-            groupBoxOut_GDO.Name = "groupBoxOut_GDO";
-            groupBoxOut_GDO.Size = new Size(921, 561);
-            groupBoxOut_GDO.TabIndex = 1;
-            groupBoxOut_GDO.TabStop = false;
-            groupBoxOut_GDO.Text = "Вывод";
-            // 
-            // dataGridViewResult_GDO
-            // 
-            dataGridViewResult_GDO.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewResult_GDO.Location = new Point(0, 26);
-            dataGridViewResult_GDO.Name = "dataGridViewResult_GDO";
-            dataGridViewResult_GDO.RowHeadersVisible = false;
-            dataGridViewResult_GDO.RowHeadersWidth = 51;
-            dataGridViewResult_GDO.Size = new Size(970, 651);
-            dataGridViewResult_GDO.TabIndex = 0;
-            dataGridViewResult_GDO.CellContentClick += dataGridViewResult_GDO_CellContentClick;
             // 
             // splitterFormMain_GDO
             // 
@@ -391,15 +444,54 @@
             splitterFormMain_GDO.TabIndex = 0;
             splitterFormMain_GDO.TabStop = false;
             // 
+            // groupBoxSearch_GDO
+            // 
+            groupBoxSearch_GDO.Controls.Add(buttonSearch_GDO);
+            groupBoxSearch_GDO.Controls.Add(textBoxSearch_GDO);
+            groupBoxSearch_GDO.Location = new Point(3, 3);
+            groupBoxSearch_GDO.Name = "groupBoxSearch_GDO";
+            groupBoxSearch_GDO.Size = new Size(971, 66);
+            groupBoxSearch_GDO.TabIndex = 11;
+            groupBoxSearch_GDO.TabStop = false;
+            groupBoxSearch_GDO.Text = "Поиск";
+            // 
+            // buttonSearch_GDO
+            // 
+            buttonSearch_GDO.BackColor = Color.FromArgb(192, 192, 255);
+            buttonSearch_GDO.Location = new Point(744, 23);
+            buttonSearch_GDO.Name = "buttonSearch_GDO";
+            buttonSearch_GDO.Size = new Size(120, 43);
+            buttonSearch_GDO.TabIndex = 1;
+            buttonSearch_GDO.Text = "Обновить";
+            buttonSearch_GDO.UseVisualStyleBackColor = false;
+            buttonSearch_GDO.Click += buttonSearch_GDO_Click;
+            // 
+            // textBoxSearch_GDO
+            // 
+            textBoxSearch_GDO.Location = new Point(6, 28);
+            textBoxSearch_GDO.Name = "textBoxSearch_GDO";
+            textBoxSearch_GDO.Size = new Size(715, 27);
+            textBoxSearch_GDO.TabIndex = 0;
+            // 
             // openFileDialog_GDO
             // 
             openFileDialog_GDO.FileName = "openFileDialog_GDO";
+            // 
+            // panelSearch_GDO
+            // 
+            panelSearch_GDO.Controls.Add(groupBoxSearch_GDO);
+            panelSearch_GDO.Dock = DockStyle.Top;
+            panelSearch_GDO.Location = new Point(324, 43);
+            panelSearch_GDO.Name = "panelSearch_GDO";
+            panelSearch_GDO.Size = new Size(1116, 86);
+            panelSearch_GDO.TabIndex = 2;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1440, 787);
+            Controls.Add(panelSearch_GDO);
             Controls.Add(panelFill_GDO);
             Controls.Add(panelLeft_GDO);
             Controls.Add(panelTop_GDO);
@@ -413,13 +505,17 @@
             menuStrip_GDO.ResumeLayout(false);
             menuStrip_GDO.PerformLayout();
             panelLeft_GDO.ResumeLayout(false);
+            groupBoxLeft_GDO.ResumeLayout(false);
+            groupBoxLeft_GDO.PerformLayout();
             groupBoxResult_GDO.ResumeLayout(false);
             groupBoxResult_GDO.PerformLayout();
             panelFill_GDO.ResumeLayout(false);
+            groupBoxOut_GDO.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chart_GDO).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewResult_GDO).EndInit();
             groupBoxSearch_GDO.ResumeLayout(false);
             groupBoxSearch_GDO.PerformLayout();
-            groupBoxOut_GDO.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewResult_GDO).EndInit();
+            panelSearch_GDO.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -459,5 +555,12 @@
         private Button buttonSortExpirienceDescending_GDO;
         private Button buttonSortSalaryAscendingDescending_GDO;
         private ToolStripMenuItem какПользоватьсяПрограммойToolStripMenuItem;
+        private GroupBox groupBoxLeft_GDO;
+        private Panel panelSearch_GDO;
+        private Button buttonDeleteRow_GDO;
+        private TextBox textBoxDeletRow_GDO;
+        private Button buttonAddRow_GDO;
+        private Button buttonChart_GDO;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_GDO;
     }
 }
