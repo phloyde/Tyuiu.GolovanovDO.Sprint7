@@ -16,5 +16,10 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
         {
             InitializeComponent();
         }
+
+        private void buttonOK_GDO_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

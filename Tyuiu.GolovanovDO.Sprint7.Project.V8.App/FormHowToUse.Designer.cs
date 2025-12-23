@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHowToUse));
             labelHowToUse_GDO = new Label();
+            buttonOK_GDO = new Button();
             SuspendLayout();
             // 
             // labelHowToUse_GDO
@@ -37,17 +38,29 @@
             labelHowToUse_GDO.AutoSize = true;
             labelHowToUse_GDO.Location = new Point(12, 9);
             labelHowToUse_GDO.Name = "labelHowToUse_GDO";
-            labelHowToUse_GDO.Size = new Size(1000, 240);
+            labelHowToUse_GDO.Size = new Size(825, 220);
             labelHowToUse_GDO.TabIndex = 0;
             labelHowToUse_GDO.Text = resources.GetString("labelHowToUse_GDO.Text");
+            // 
+            // buttonOK_GDO
+            // 
+            buttonOK_GDO.Location = new Point(709, 211);
+            buttonOK_GDO.Name = "buttonOK_GDO";
+            buttonOK_GDO.Size = new Size(94, 29);
+            buttonOK_GDO.TabIndex = 1;
+            buttonOK_GDO.Text = "OK";
+            buttonOK_GDO.UseVisualStyleBackColor = true;
+            buttonOK_GDO.Click += buttonOK_GDO_Click;
             // 
             // FormHowToUse
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1039, 280);
+            ClientSize = new Size(826, 250);
+            Controls.Add(buttonOK_GDO);
             Controls.Add(labelHowToUse_GDO);
             Name = "FormHowToUse";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Как пользоваться программой";
             ResumeLayout(false);
             PerformLayout();
@@ -56,5 +69,6 @@
         #endregion
 
         private Label labelHowToUse_GDO;
+        private Button buttonOK_GDO;
     }
 }
