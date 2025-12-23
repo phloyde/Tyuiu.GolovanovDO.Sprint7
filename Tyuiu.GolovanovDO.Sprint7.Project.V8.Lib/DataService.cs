@@ -21,12 +21,11 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
 
                 for (int j = 0; j < 7;  j++)
                 {
-                    
                     if (j < part.Length)
                     {
                         array[i, j] = part[j];
                     }
-                    else
+                    else//То есть строка part короче 7 столбцов
                     {
                         array[i, j] = "";
                     } 
@@ -37,7 +36,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
 
         public void SaveToFile(string path, string[,] array)
         {
-            List<string> lines = new List<string>();
+            List<string> lines = new List<string>();//Cоздаем список lines
 
             for (int i = 0;i < array.GetLength(0); i++)
             {
@@ -62,7 +61,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
-
                 int year = Convert.ToInt32(array[i, 5]);
                 if (year < min)
                 {
@@ -153,20 +151,20 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
 
         public string[,] Search(string[,] array, string text)
         {
-            List<string[]> str = new List<string[]>();
-
+            List<string[]> str = new List<string[]>();//Создаем список массивов строк
+                                                      //То есть каждый эл-тн массива - строка
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    if (array[i, j].ToLower().Contains(text.ToLower()))
+                    if (array[i, j].ToLower().Contains(text.ToLower()))//Если есть текст, без учета регистра
                     {
                         string[] row = new string[7];
                         for (int k = 0; k < 7; k++)
                             row[k] = array[i, k];
 
                         str.Add(row);
-                        break;
+                        break;//Чтобы не добавлять дубли выходим из строки
                     }
                 }
             }
@@ -175,23 +173,23 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    res[i, j] = str[i][j];  //Возвращает j-й элемент внутри i-го массива
+                    res[i, j] = str[i][j];//Возвращаем j-й элемент внутри i-го массива
                 }
             }
             return res;
         }
 
-        public string GetFullName(string[,] array, int employeeIndex)
+        public string GetFullName(string[,] array, int Index)
         {
             string fullname = "";
             
-            if (employeeIndex >= array.GetLength(0) || employeeIndex < 0)
+            if (Index >= array.GetLength(0) || Index < 0)
             {
                 return "Индекс выходит за границы";
             }
-            string firstname = array[employeeIndex, 1];
-            string midname = array[employeeIndex, 2];
-            string lastname = array[employeeIndex, 3];
+            string firstname = array[Index, 1];
+            string midname = array[Index, 2];
+            string lastname = array[Index, 3];
 
             fullname = firstname + " " + midname + " " + lastname.Trim();
             return fullname;
@@ -213,13 +211,14 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.Lib
 
         public int MostOldPeople(string[,] array)
         {
-            DateTime today = DateTime.Today;
+            DateTime today = DateTime.Today;//Сегодняшняя дата
             int maxAge = 0;
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                DateTime birthDate = DateTime.ParseExact(array[i, 4], "dd.MM.yyyy", null);
-
+                DateTime birthDate = DateTime.ParseExact(array[i, 4], "dd.MM.yyyy", null);//преобразуем строку в дату по шаблону
+                                                                                    // null использует текущую культуру системы
+                                                                                    // то есть день.месяц.год
                 int age = today.Year - birthDate.Year;
                 if (today.Month < birthDate.Month || (today.Month == birthDate.Month && today.Day < birthDate.Day))
                 {

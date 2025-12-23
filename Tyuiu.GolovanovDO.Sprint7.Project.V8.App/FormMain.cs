@@ -149,8 +149,8 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 dataGridViewResult_GDO.Rows.Add(name);
             }
 
-            isFullNameListShown = true;
-            textBoxSearch_GDO.Enabled = false;
+            isFullNameListShown = true;//список показывается 
+            textBoxSearch_GDO.Enabled = false;//поле поиска отключам
         }
 
         private void buttonMostOldPeople_GDO_Click(object sender, EventArgs e)
@@ -229,31 +229,29 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 dataGridViewResult_GDO.Columns[i].HeaderText = header[i];
             }
 
-            //Добавляем данные в dataGridViewResult_GDO
-            for (int r = 0; r < rows; r++)
+            for (int r = 0; r < rows; r++)//заполняем таблицу
             {
                 for (int c = 0; (c < cols); c++)
                 {
-                    dataGridViewResult_GDO.Rows[r].Cells[c].Value = dataArray[r, c];
+                    dataGridViewResult_GDO.Rows[r].Cells[c].Value = dataArray[r, c];//помещает значение из dataArray в таблицу
                 }
             }
-            isFullNameListShown = false;
+            isFullNameListShown = false;//показывается полная таблица, а не ФИО
         }
 
-        private string[,] GetDataFromDataGridView()
+        private string[,] GetDataFromDataGridView()//создал, чтобы загружать значчения из таблицы в массив
         {
             int rowCount = dataGridViewResult_GDO.Rows.Count;
 
-            // Исключаем пустую строку для добавления
+            // убираем пустую строку, чтобы не было ошибки о неполных данных
             if (dataGridViewResult_GDO.AllowUserToAddRows && rowCount > 0)
             {
                 rowCount--;
             }
 
-            // Проверяем, есть ли данные в таблице
             if (rowCount <= 0)
             {
-                return new string[0, 0]; // Возвращаем пустой массив
+                return new string[0, 0];
             }
             int colCount = dataGridViewResult_GDO.Columns.Count;
             string[,] result = new string[rowCount, colCount];
@@ -262,7 +260,8 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             {
                 for (int c = 0; c < colCount; c++)
                 {
-                    result[r, c] = Convert.ToString(dataGridViewResult_GDO.Rows[r].Cells[c].Value) ?? "";
+                    result[r, c] = Convert.ToString(dataGridViewResult_GDO.Rows[r].Cells[c].Value) ?? "";//если слева пустая ячейко, то есть не заполнена, то и возвращаем путстую ячейку
+                                                                                                         //если в ячейке есть данные, то берем их
                 }
             }
 
@@ -274,18 +273,18 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
         private void buttonSearch_GDO_Click(object sender, EventArgs e)
         {
+            //точно так же как при открытии файла
             string searchText = textBoxSearch_GDO.Text;
 
-            // Проверяем, есть ли данные в savedData
+            
             if (savedData == null || savedData.GetLength(0) == 0)
             {
                 MessageBox.Show("Таблица пуста!", "Результаты поиска",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
-            // Если строка поиска пуста - показываем всю таблицу
-            if (string.IsNullOrWhiteSpace(searchText))
+            
+            if (string.IsNullOrWhiteSpace(searchText))//строка поиска пуста - показываем всю талицу
             {
                 dataGridViewResult_GDO.Rows.Clear();
                 dataGridViewResult_GDO.Columns.Clear();
@@ -330,7 +329,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            // Ищем в savedData
+            // если в поиске что-то есть
             string[,] searchResults = ds.Search(savedData, searchText);
 
             if (searchResults.GetLength(0) == 0)
@@ -403,13 +402,15 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
             for (int i = 0; i < rows; i++)
             {
-                if (dataGridViewResult_GDO.Rows[i].IsNewRow) continue;
+                if (dataGridViewResult_GDO.Rows[i].IsNewRow)//пропускаем пустые строки
+                {
+                    continue;
+                }
 
                 string str = "";
 
                 for (int j = 0; j < cols; j++)
                 {
-                    // Convert.ToString безопасно работает с null
                     str = str + Convert.ToString(dataGridViewResult_GDO.Rows[i].Cells[j].Value);
 
                     if (j != cols - 1)
@@ -430,6 +431,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
         private void buttonSortExpirienceAscending_GDO_Click(object sender, EventArgs e)
         {
+            //пузырьковым методом по возрастанию
             if (isFullNameListShown)
             {
                 MessageBox.Show(
@@ -441,7 +443,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             }
 
             int rowCount = dataGridViewResult_GDO.RowCount;
-            if (dataGridViewResult_GDO.AllowUserToAddRows)
+            if (dataGridViewResult_GDO.AllowUserToAddRows)//опять же удаляем пустую строку
             {
                 rowCount--;
             }
@@ -450,7 +452,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             {
                 for (int j = 0; j < rowCount - 1; j++)
                 {
-                    //Две соседние строки
                     DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
                     DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
 
@@ -458,8 +459,8 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                     string exp2Str = row2.Cells[5].Value.ToString() ?? "0";
 
                     int exp1 = 0, exp2 = 0;
-                    int.TryParse(exp1Str, out exp1);
-                    int.TryParse(exp2Str, out exp2);
+                    int.TryParse(exp1Str, out exp1);//чтобы не было ошибок при пустых строках, используем tryparse
+                    int.TryParse(exp2Str, out exp2);//присваеваем знач. в exp
 
                     if (exp1 > exp2)
                     {
@@ -478,6 +479,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
         private void buttonSortSalaryAscending_GDO_Click(object sender, EventArgs e)
         {
+            //пузырьковым методом по возрастанию
             if (isFullNameListShown)
             {
                 MessageBox.Show(
@@ -488,23 +490,21 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            // Просто сортируем строки прямо в DataGridView
             int rowCount = dataGridViewResult_GDO.Rows.Count;
 
-            // Если есть пустая строка для добавления, уменьшаем счетчик
             if (dataGridViewResult_GDO.AllowUserToAddRows)
+            {
                 rowCount--;
+            }
+                
 
-            // Самый тупой способ: пузырьковая сортировка
             for (int i = 0; i < rowCount - 1; i++)
             {
                 for (int j = 0; j < rowCount - i - 1; j++)
                 {
-                    // Берем две соседние строки
                     DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
                     DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
-
-                    // Получаем оклад из обеих строк
+     
                     string salary1Str = row1.Cells[6].Value?.ToString() ?? "0";
                     string salary2Str = row2.Cells[6].Value?.ToString() ?? "0";
 
@@ -512,10 +512,10 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                     int.TryParse(salary1Str, out salary1);
                     int.TryParse(salary2Str, out salary2);
 
-                    // Если первая больше второй - меняем местами
+                    
                     if (salary1 > salary2)
                     {
-                        // Меняем все столбцы
+                        
                         for (int col = 0; col < dataGridViewResult_GDO.ColumnCount; col++)
                         {
                             object temp = row1.Cells[col].Value;
@@ -529,6 +529,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
         private void buttonSortExpirienceDescending_GDO_Click(object sender, EventArgs e)
         {
+            //пузырьковым методом по убыванию
             if (isFullNameListShown)
             {
                 MessageBox.Show(
@@ -549,7 +550,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             {
                 for (int j = 0; j < rowCount - 1; j++)
                 {
-                    //Две соседние строки
                     DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
                     DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
 
@@ -577,6 +577,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
         private void buttonSortSalaryAscendingDescending_GDO_Click(object sender, EventArgs e)
         {
+            //пузырьковым методом по убыванию
             if (isFullNameListShown)
             {
                 MessageBox.Show(
@@ -587,23 +588,18 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            // Просто сортируем строки прямо в DataGridView
             int rowCount = dataGridViewResult_GDO.Rows.Count;
 
-            // Если есть пустая строка для добавления, уменьшаем счетчик
             if (dataGridViewResult_GDO.AllowUserToAddRows)
                 rowCount--;
 
-            // Самый тупой способ: пузырьковая сортировка
             for (int i = 0; i < rowCount - 1; i++)
             {
                 for (int j = 0; j < rowCount - i - 1; j++)
                 {
-                    // Берем две соседние строки
                     DataGridViewRow row1 = dataGridViewResult_GDO.Rows[j];
                     DataGridViewRow row2 = dataGridViewResult_GDO.Rows[j + 1];
 
-                    // Получаем оклад из обеих строк
                     string salary1Str = row1.Cells[6].Value?.ToString() ?? "0";
                     string salary2Str = row2.Cells[6].Value?.ToString() ?? "0";
 
@@ -611,10 +607,8 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                     int.TryParse(salary1Str, out salary1);
                     int.TryParse(salary2Str, out salary2);
 
-                    // Если первая больше второй - меняем местами
                     if (salary1 < salary2)
                     {
-                        // Меняем все столбцы
                         for (int col = 0; col < dataGridViewResult_GDO.ColumnCount; col++)
                         {
                             object temp = row1.Cells[col].Value;
@@ -653,36 +647,30 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
             string[,] currentData = GetDataFromDataGridView();
 
-            // 1. Проверяем, есть ли данные
+            //проверяем есть ли данные
             if (currentData == null)
             {
                 MessageBox.Show("Сначала загрузите данные!");
                 return;
             }
 
-            // 2. Очищаем график
             chart_GDO.Series[0].Points.Clear();
 
-            // 3. Проходим по всем водителям
             for (int i = 0; i < currentData.GetLength(0); i++)
             {
                 try
                 {
-                    // 4. Берем стаж и зарплату
-                    int experience = int.Parse(currentData[i, 5]); // стаж в столбце 5
-                    int salary = int.Parse(currentData[i, 6]); // зарплата в столбце 6
+                    int experience = int.Parse(currentData[i, 5]); // стаж 
+                    int salary = int.Parse(currentData[i, 6]); // зарплата 
 
-                    // 5. Добавляем точку на график
                     chart_GDO.Series[0].Points.AddXY(experience, salary);
                 }
                 catch
                 {
-                    // Пропускаем если ошибка
                     continue;
                 }
             }
-
-            // 6. Настраиваем подписи осей
+            
             chart_GDO.ChartAreas[0].AxisX.Title = "Стаж (лет)";
             chart_GDO.ChartAreas[0].AxisY.Title = "Зарплата (руб.)";
         }
@@ -718,12 +706,10 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
 
             dataGridViewResult_GDO.Rows.Clear();
             dataGridViewResult_GDO.Columns.Clear();
-
-            // Задаем количество столбцов и строк
+       
             dataGridViewResult_GDO.ColumnCount = cols;
             dataGridViewResult_GDO.RowCount = rows;
 
-            // Ширина столбцов
             for (int i = 0; i < cols; i++)
                 dataGridViewResult_GDO.Columns[i].Width = 120;
 
@@ -741,7 +727,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             for (int i = 0; i < cols && i < header.Length; i++)
                 dataGridViewResult_GDO.Columns[i].HeaderText = header[i];
 
-            // Заполняем данными
             for (int r = 0; r < rows; r++)
             {
                 for (int c = 0; c < cols; c++)
@@ -750,7 +735,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 }
             }
 
-            // Сбрасываем флаги
             savedData = null;
             isFullNameListShown = false;
             textBoxSearch_GDO.Enabled = true;
@@ -758,7 +742,7 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
             MessageBox.Show("Исходная таблица восстановлена.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // Добавление пустой строки в начало таблицы
+        
         private void buttonAddRow_GDO_Click(object sender, EventArgs e)
         {
             if (isFullNameListShown)
@@ -777,15 +761,13 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            // Создаем новую пустую строку
-            DataGridViewRow newRow = new DataGridViewRow();
-            newRow.CreateCells(dataGridViewResult_GDO);
+            DataGridViewRow newRow = new DataGridViewRow();//создаем новую строку
+            newRow.CreateCells(dataGridViewResult_GDO);//я/создаем ячейки как в моей таблице
 
-            // Вставляем строку в самое начало
-            dataGridViewResult_GDO.Rows.Insert(0, newRow);
+            dataGridViewResult_GDO.Rows.Insert(0, newRow);//вставляем строку в начало
         }
 
-        // Удаление выбранной строки
+        
         private void buttonDeleteRow_GDO_Click(object sender, EventArgs e)
         {
             if (isFullNameListShown)
@@ -795,10 +777,9 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            string text = textBoxDeletRow_GDO.Text; // Берем текст из TextBox
+            string text = textBoxDeletRow_GDO.Text;
             int rowIndex;
-
-            // Пробуем преобразовать текст в число
+     
             try
             {
                 rowIndex = Convert.ToInt32(text);
@@ -810,7 +791,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            // Проверяем диапазон
             if (rowIndex < 0 || rowIndex >= dataGridViewResult_GDO.Rows.Count)
             {
                 MessageBox.Show("Номер строки вне диапазона.", "Ошибка",
@@ -818,7 +798,6 @@ namespace Tyuiu.GolovanovDO.Sprint7.Project.V8.App
                 return;
             }
 
-            // Удаляем строку
             dataGridViewResult_GDO.Rows.RemoveAt(rowIndex);
         }
     }

@@ -41,6 +41,7 @@
             какПользоватьсяПрограммойToolStripMenuItem = new ToolStripMenuItem();
             panelLeft_GDO = new Panel();
             groupBoxLeft_GDO = new GroupBox();
+            labelIndexRow_GDO = new Label();
             buttonChart_GDO = new Button();
             buttonAddRow_GDO = new Button();
             buttonDeleteRow_GDO = new Button();
@@ -59,6 +60,7 @@
             buttonAvgSalary_GDO = new Button();
             panelBottom_GDO = new Panel();
             groupBoxOut_GDO = new GroupBox();
+            labelInfoAboutTable_GDO = new Label();
             buttonReturnOriginalTable_GDO = new Button();
             buttonSaveCurrentTable_GDO = new Button();
             chart_GDO = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -74,8 +76,6 @@
             textBoxSearch_GDO = new TextBox();
             openFileDialog_GDO = new OpenFileDialog();
             saveFileDialog_GDO = new SaveFileDialog();
-            labelIndexRow_GDO = new Label();
-            labelInfoAboutTable_GDO = new Label();
             panelTop_GDO.SuspendLayout();
             menuStrip_GDO.SuspendLayout();
             panelLeft_GDO.SuspendLayout();
@@ -120,14 +120,14 @@
             // сохранитьToolStripMenuItem
             // 
             сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.Size = new Size(224, 26);
+            сохранитьToolStripMenuItem.Size = new Size(166, 26);
             сохранитьToolStripMenuItem.Text = "Сохранить";
             сохранитьToolStripMenuItem.Click += сохранитьToolStripMenuItem_Click;
             // 
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new Size(224, 26);
+            открытьToolStripMenuItem.Size = new Size(166, 26);
             открытьToolStripMenuItem.Text = "Открыть";
             открытьToolStripMenuItem.Click += открытьToolStripMenuItem_Click;
             // 
@@ -188,6 +188,15 @@
             groupBoxLeft_GDO.TabIndex = 12;
             groupBoxLeft_GDO.TabStop = false;
             groupBoxLeft_GDO.Text = "Действия";
+            // 
+            // labelIndexRow_GDO
+            // 
+            labelIndexRow_GDO.AutoSize = true;
+            labelIndexRow_GDO.Location = new Point(194, 601);
+            labelIndexRow_GDO.Name = "labelIndexRow_GDO";
+            labelIndexRow_GDO.Size = new Size(115, 40);
+            labelIndexRow_GDO.TabIndex = 16;
+            labelIndexRow_GDO.Text = "Введите номер\r\n       строки";
             // 
             // buttonChart_GDO
             // 
@@ -386,6 +395,15 @@
             groupBoxOut_GDO.TabStop = false;
             groupBoxOut_GDO.Text = "Вывод";
             // 
+            // labelInfoAboutTable_GDO
+            // 
+            labelInfoAboutTable_GDO.AutoSize = true;
+            labelInfoAboutTable_GDO.Location = new Point(569, 122);
+            labelInfoAboutTable_GDO.Name = "labelInfoAboutTable_GDO";
+            labelInfoAboutTable_GDO.Size = new Size(207, 40);
+            labelInfoAboutTable_GDO.TabIndex = 19;
+            labelInfoAboutTable_GDO.Text = "После изменения в таблице\r\nвсегда сохранять её.";
+            // 
             // buttonReturnOriginalTable_GDO
             // 
             buttonReturnOriginalTable_GDO.BackColor = Color.FromArgb(255, 255, 128);
@@ -420,6 +438,7 @@
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
             chart_GDO.Series.Add(series1);
             chart_GDO.Size = new Size(577, 449);
             chart_GDO.TabIndex = 16;
@@ -530,24 +549,6 @@
             // openFileDialog_GDO
             // 
             openFileDialog_GDO.FileName = "openFileDialog_GDO";
-            // 
-            // labelIndexRow_GDO
-            // 
-            labelIndexRow_GDO.AutoSize = true;
-            labelIndexRow_GDO.Location = new Point(194, 601);
-            labelIndexRow_GDO.Name = "labelIndexRow_GDO";
-            labelIndexRow_GDO.Size = new Size(115, 40);
-            labelIndexRow_GDO.TabIndex = 16;
-            labelIndexRow_GDO.Text = "Введите номер\r\n       строки";
-            // 
-            // labelInfoAboutTable_GDO
-            // 
-            labelInfoAboutTable_GDO.AutoSize = true;
-            labelInfoAboutTable_GDO.Location = new Point(569, 122);
-            labelInfoAboutTable_GDO.Name = "labelInfoAboutTable_GDO";
-            labelInfoAboutTable_GDO.Size = new Size(207, 40);
-            labelInfoAboutTable_GDO.TabIndex = 19;
-            labelInfoAboutTable_GDO.Text = "После изменения в таблице\r\nвсегда сохранять её.";
             // 
             // FormMain
             // 
